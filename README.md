@@ -10,7 +10,6 @@ Extended skill collection for AI agents, built on [@devxiyang/agent-skill](https
 | [developer](./developer/SKILL.md) | Developer toolkit — git, shell, curl, npm, jq, docker, python, ssh, make, and more. Common operations for version control, scripting, HTTP, package management, JSON processing, and containers. | `git`, `npm`, `jq`, `docker`, `curl`, `python3` |
 | [media](./media/SKILL.md) | Process image, video, and audio files locally. Powered by ImageMagick (images) and ffmpeg (video/audio) — convert, compress, edit, and batch process media files. | `ffmpeg`, `magick` |
 | [office](./office/SKILL.md) | Create, read, and transform office documents — Excel spreadsheets, Word documents, PowerPoint presentations, and PDFs. Powered by Python. | `python3` |
-| [weather](./weather/SKILL.md) | Get current weather and forecasts for any location. No API key required. | `curl` |
 | [web-ppt](./web-ppt/SKILL.md) | Create presentation slides as a single self-contained HTML file with no dependencies. Pure HTML, CSS, and minimal JavaScript — keyboard navigation, smooth transitions, multiple layouts, and easy theming. | — |
 <!-- skills-table-end -->
 
