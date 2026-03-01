@@ -9,10 +9,10 @@ tags: presentation,html,css,slides,ppt
 
 Produce a **single `.html` file** that opens in any browser. No build tools, no CDN, no external fonts — everything inline.
 
-## Design principles
+## Core principles
 
 - One file, zero dependencies. Images go in as `<img>` tags or base64 data URIs.
-- 16:9 ratio (1280 × 720 logical units) scaled with `zoom` so it fills any screen.
+- 16:9 ratio (1280 × 720 logical units) scaled to fill any screen.
 - CSS custom properties for theme colors — change two variables to re-skin the whole deck.
 - Keyboard: `→` / `Space` = next, `←` = previous, `F` = fullscreen.
 - Click anywhere on a slide = next slide.
@@ -20,11 +20,9 @@ Produce a **single `.html` file** that opens in any browser. No build tools, no 
 
 ## Slide layouts
 
-Use one of these layout classes on each `.slide`:
-
 | Class | Purpose |
 |---|---|
-| `layout-cover` | Title slide — large centered title + subtitle |
+| `layout-cover` | Title slide — large title + subtitle |
 | `layout-title` | Section divider — bold title, optional label above |
 | `layout-content` | Heading + bullet list |
 | `layout-two-col` | Heading + two equal columns |
@@ -32,9 +30,17 @@ Use one of these layout classes on each `.slide`:
 | `layout-code` | Heading + code block |
 | `layout-blank` | No chrome — full creative control |
 
-## Complete boilerplate
+## References
 
-Copy this, then fill in your slides:
+Before generating a deck, load the relevant guides:
+
+- `references/typography.md` — font sizes, line height, character limits
+- `references/colors.md` — themes, contrast rules, color roles
+- `references/visual-hierarchy.md` — layout, whitespace, guiding the eye
+- `references/common-mistakes.md` — what to avoid and how to fix it
+- `references/templates.md` — slide-by-slide structures for common scenarios
+
+## Complete boilerplate
 
 ```html
 <!DOCTYPE html>
@@ -101,9 +107,7 @@ strong { color: var(--accent); font-weight: 700; }
 /* Cover */
 .layout-cover { align-items: flex-start; justify-content: flex-end; padding-bottom: 96px; }
 .layout-cover h1 { max-width: 900px; }
-.layout-cover .subtitle {
-  font-size: 26px; color: var(--muted); margin-top: 20px;
-}
+.layout-cover .subtitle { font-size: 26px; color: var(--muted); margin-top: 20px; }
 .layout-cover .label {
   font-size: 14px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
   color: var(--accent); margin-bottom: 24px;
@@ -132,7 +136,10 @@ strong { color: var(--accent); font-weight: 700; }
   max-width: 900px; color: var(--text);
   quotes: '\201C' '\201D';
 }
-.layout-quote blockquote::before { content: open-quote; color: var(--accent); font-size: 80px; line-height: 0; vertical-align: -.4em; margin-right: 8px; }
+.layout-quote blockquote::before {
+  content: open-quote; color: var(--accent);
+  font-size: 80px; line-height: 0; vertical-align: -.4em; margin-right: 8px;
+}
 .layout-quote cite { font-size: 20px; color: var(--muted); font-style: normal; }
 
 /* Code */
@@ -258,53 +265,14 @@ console.log(greet('World')); // Hello, World!</code></pre>
 </html>
 ```
 
-## Theming
-
-Change these two variables in `:root` to re-skin the whole deck instantly:
-
-```css
-/* Light theme */
-:root {
-  --bg:      #ffffff;
-  --surface: #f8fafc;
-  --accent:  #6366f1;
-  --text:    #0f172a;
-  --muted:   #64748b;
-  --code-bg: #f1f5f9;
-}
-
-/* Warm dark */
-:root {
-  --bg:      #1c1917;
-  --surface: #292524;
-  --accent:  #f97316;
-  --text:    #fafaf9;
-  --muted:   #a8a29e;
-  --code-bg: #0c0a09;
-}
-```
-
-## Slide writing tips
-
-- **One idea per slide.** If you need a second idea, make a second slide.
-- **Title = the takeaway.** Write the conclusion as the heading, not the topic.
-- **Max 5 bullets.** If you have more, split the slide.
-- **Numbers stand out.** Put key metrics in `<strong>` so they draw the eye.
-- **Blank slides work.** Use `layout-blank` for a full-screen image or diagram — silence is powerful.
-- **End with a clear ask.** The last slide should state exactly what you want the audience to do next.
-
 ## Adding images
 
-Inline images directly — no external files needed:
-
 ```html
+<!-- Base64 (truly self-contained) -->
 <div class="slide layout-blank">
   <img src="data:image/png;base64,..." style="width:100%;height:100%;object-fit:cover;">
 </div>
-```
 
-Or reference a local file when presenting from the same folder:
-
-```html
+<!-- Local file (same folder) -->
 <img src="chart.png" style="max-width:100%; max-height:500px;">
 ```
