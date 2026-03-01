@@ -7,7 +7,7 @@ Extended skill collection for AI agents, built on [@devxiyang/agent-skill](https
 <!-- skills-table-start -->
 | Skill | Description | Requires |
 |---|---|---|
-| [developer](./developer/SKILL.md) | Developer toolkit — git, shell, npm, jq, and docker. Common operations for version control, scripting, package management, JSON processing, and containers. | `git`, `npm`, `jq`, `docker` |
+| [developer](./developer/SKILL.md) | Developer toolkit — git, shell, curl, npm, jq, docker, python, ssh, make, and more. Common operations for version control, scripting, HTTP, package management, JSON processing, and containers. | `git`, `npm`, `jq`, `docker`, `curl`, `python3` |
 | [excel](./excel/SKILL.md) | Read, write, and transform Excel files (.xlsx, .xls, .csv). Use for extracting data, updating cells, converting formats, and generating reports. | `python3` |
 | [jq](./jq/SKILL.md) | Process and transform JSON data using jq. Use when filtering API responses, extracting fields, reshaping JSON, or querying structured data. | `jq` |
 | [media](./media/SKILL.md) | Process video and audio files using ffmpeg. Convert formats, compress, trim, edit, add subtitles, mix audio, and batch process media files. | `ffmpeg` |

@@ -1,5 +1,7 @@
 # docker — Containers
 
+> 🚨 **CRITICAL — MUST confirm with user before running:** `docker system prune -a`, `docker volume prune`, `docker rm` on named containers, any command targeting a production environment. **Volume data can be permanently and silently deleted.**
+
 ## Images
 
 ```bash

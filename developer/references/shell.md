@@ -1,5 +1,7 @@
 # shell — Bash Scripting
 
+> 🚨 **CRITICAL — MUST confirm with user before running:** `rm -rf`, `> file` (overwrites without warning), any command targeting production paths or shared systems. **Always show the full command and wait for explicit approval.**
+
 ## Files & directories
 
 ```bash

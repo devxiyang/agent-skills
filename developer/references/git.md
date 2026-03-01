@@ -1,5 +1,7 @@
 # git — Version Control
 
+> 🚨 **CRITICAL — MUST confirm with user before running:** `git push --force`, `git reset --hard`, `git branch -D`, `git clean -f`, rebase on shared branches. These are **irreversible** and may affect collaborators.
+
 ## Setup
 
 ```bash
