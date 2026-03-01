@@ -32,10 +32,9 @@
   },
   "files": [
     "dist",
+    "developer",
     "excel",
-    "jq",
     "media",
-    "npm",
     "weather",
     "web-ppt"
   ],
