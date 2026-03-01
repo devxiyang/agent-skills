@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
       - uses: actions/checkout@v4
@@ -26,21 +27,18 @@ jobs:
             git push
           fi
 
-      - name: Read version
-        id: version
-        run: echo "value=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          release-type: node
 
-      - name: Check if tag already exists
-        id: tag
-        run: |
-          if git ls-remote --tags origin "refs/tags/v${{ steps.version.outputs.value }}" | grep -q .; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-          else
-            echo "exists=false" >> $GITHUB_OUTPUT
-          fi
+      - uses: actions/checkout@v4
+        if: ${{ steps.release.outputs.release_created }}
 
-      - name: Zip skills
-        if: steps.tag.outputs.exists == 'false'
+      - name: Zip and upload skills
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           for dir in */; do
             name="${dir%/}"
@@ -48,13 +46,4 @@ jobs:
               zip -r "$name.zip" "$name/"
             fi
           done
-
-      - name: Create release and upload assets
-        if: steps.tag.outputs.exists == 'false'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release create "v${{ steps.version.outputs.value }}" \
-            --title "v${{ steps.version.outputs.value }}" \
-            --generate-notes \
-            *.zip
+          gh release upload "${{ steps.release.outputs.tag_name }}" *.zip
