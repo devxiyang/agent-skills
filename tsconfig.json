@@ -7,12 +7,12 @@
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "dist",
-    "rootDir": "src",
+    "rootDir": ".dev/src",
     "strict": true,
     "skipLibCheck": true,
     "noEmitOnError": true,
     "lib": ["ES2022"],
     "types": ["node"]
   },
-  "include": ["src/**/*.ts"]
+  "include": [".dev/src/**/*.ts"]
 }
