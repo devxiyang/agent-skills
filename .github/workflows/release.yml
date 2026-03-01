@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
 
     steps:
       - uses: actions/checkout@v4
@@ -17,28 +16,21 @@ jobs:
       - name: Update README skills table
         run: node .dev/scripts/update-readme.mjs
 
-      - name: Commit README if changed
+      - name: Bump patch version
+        id: version
         run: |
-          if ! git diff --quiet README.md; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add README.md
-            git commit -m "chore: update skills table [skip ci]"
-            git push
-          fi
+          npm version patch --no-git-tag-version
+          echo "value=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
-      - uses: googleapis/release-please-action@v4
-        id: release
-        with:
-          release-type: node
+      - name: Commit version bump and README
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json README.md
+          git commit -m "chore: release v${{ steps.version.outputs.value }} [skip ci]"
+          git push
 
-      - uses: actions/checkout@v4
-        if: ${{ steps.release.outputs.release_created }}
-
-      - name: Zip and upload skills
-        if: ${{ steps.release.outputs.release_created }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Zip skills
         run: |
           for dir in */; do
             name="${dir%/}"
@@ -46,4 +38,12 @@ jobs:
               zip -r "$name.zip" "$name/"
             fi
           done
-          gh release upload "${{ steps.release.outputs.tag_name }}" *.zip
+
+      - name: Create release and upload assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v${{ steps.version.outputs.value }}" \
+            --title "v${{ steps.version.outputs.value }}" \
+            --generate-notes \
+            *.zip
