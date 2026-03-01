@@ -32,6 +32,8 @@
   },
   "files": [
     "dist",
+    "excel",
+    "ffmpeg",
     "jq",
     "npm",
     "weather"
