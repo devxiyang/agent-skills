@@ -1,36 +1,47 @@
-# Installing ffmpeg
+# Installing Media Tools
 
-## macOS
+## ffmpeg
 
+### macOS
 ```bash
 brew install ffmpeg
 ```
 
-## Windows
-
-If winget is available:
-
+### Windows
 ```powershell
 winget install Gyan.FFmpeg
 ```
+Or download from https://ffmpeg.org/download.html, extract, add `bin/` to PATH.
 
-Or download a build from https://ffmpeg.org/download.html, extract it, and add the `bin/` folder to PATH.
-
-If Chocolatey is available:
-
-```powershell
-choco install ffmpeg
-```
-
-## Linux
-
+### Linux
 ```bash
-# Debian/Ubuntu
-sudo apt install ffmpeg
-
-# Fedora
-sudo dnf install ffmpeg
-
-# Arch
-sudo pacman -S ffmpeg
+sudo apt install ffmpeg        # Debian/Ubuntu
+sudo dnf install ffmpeg        # Fedora
+sudo pacman -S ffmpeg          # Arch
 ```
+
+---
+
+## ImageMagick
+
+### macOS
+```bash
+brew install imagemagick
+```
+
+### Windows
+```powershell
+winget install ImageMagick.ImageMagick
+```
+Or download installer from https://imagemagick.org/script/download.php
+
+### Linux
+```bash
+sudo apt install imagemagick        # Debian/Ubuntu
+sudo dnf install imagemagick        # Fedora
+sudo pacman -S imagemagick          # Arch
+```
+
+Verify: `magick --version`
+
+> Note: on older ImageMagick installs (v6), use `convert` instead of `magick`.
