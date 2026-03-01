@@ -12,6 +12,7 @@ Extended skill collection for AI agents, built on [@devxiyang/agent-skill](https
 | [jq](./jq/SKILL.md) | Process and transform JSON data using jq. Use when filtering API responses, extracting fields, reshaping JSON, or querying structured data. | `jq` |
 | [npm](./npm/SKILL.md) | Manage Node.js packages and run scripts with npm. Use for installing dependencies, running scripts, publishing packages, and managing package.json. | `npm` |
 | [weather](./weather/SKILL.md) | Get current weather and forecasts for any location. No API key required. | `curl` |
+| [web-ppt](./web-ppt/SKILL.md) | Create presentation slides as a single self-contained HTML file with no dependencies. Pure HTML, CSS, and minimal JavaScript — keyboard navigation, smooth transitions, multiple layouts, and easy theming. | — |
 <!-- skills-table-end -->
 
 ## Usage

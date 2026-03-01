@@ -36,7 +36,8 @@
     "ffmpeg",
     "jq",
     "npm",
-    "weather"
+    "weather",
+    "web-ppt"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
