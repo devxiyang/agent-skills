@@ -1,6 +1,6 @@
 {
   "name": "@devxiyang/agent-skills",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Extended skill collection for AI agents — jq, npm, ffmpeg, office tools and more",
   "license": "MIT",
   "repository": {
