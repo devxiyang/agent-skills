@@ -1,0 +1,59 @@
+{
+  "name": "@devxiyang/agent-skills",
+  "version": "0.0.1",
+  "description": "Extended skill collection for AI agents — jq, npm, ffmpeg, office tools and more",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devxiyang/agent-skills.git"
+  },
+  "keywords": [
+    "agent",
+    "skill",
+    "llm",
+    "jq",
+    "npm",
+    "ffmpeg"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "type": "module",
+  "bin": {
+    "agent-skills": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "jq",
+    "npm",
+    "weather"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "@types/node": ">=18",
+    "@devxiyang/agent-skill": ">=0.1.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/node": {
+      "optional": true
+    },
+    "@devxiyang/agent-skill": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.8.0"
+  }
+}
