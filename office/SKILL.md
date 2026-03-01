@@ -17,46 +17,59 @@ python3 -c "import openpyxl, pandas, docx, pptx, pypdf; print('ok')"
 
 If missing, load `references/install.md`.
 
-## Tools & references
+## References
 
 | Format | Purpose | Reference |
 |---|---|---|
-| Excel (.xlsx) | Read, write, filter, transform spreadsheets | `references/excel.md` |
-| Word (.docx) | Create, read, modify documents | `references/word.md` |
-| PowerPoint (.pptx) | Create, read, modify presentations | `references/ppt.md` |
-| PDF | Merge, split, extract text, compress | `references/pdf.md` |
+| Excel (.xlsx) | Tables, pivot, charts, conditional formatting, validation | `references/excel.md` |
+| Word (.docx) | Create, read, style, fill templates | `references/word.md` |
+| PowerPoint (.pptx) | Create slides, charts, tables, batch generate | `references/ppt.md` |
+| PDF | Merge, split, extract text, protect, compress | `references/pdf.md` |
 | Convert | Convert between formats via LibreOffice | `references/convert.md` |
+
+## Ready-to-run scripts
+
+| Script | What it does | Usage |
+|---|---|---|
+| `scripts/excel_report.py` | CSV → styled Excel report with chart and summary | `python3 excel_report.py data.csv` |
+| `scripts/excel_pivot.py` | Excel/CSV → pivot table with formatting | `python3 excel_pivot.py data.xlsx --index Region --values Revenue` |
+| `scripts/pdf_merge.py` | Merge multiple PDFs with optional page ranges | `python3 pdf_merge.py a.pdf b.pdf c.pdf` |
+| `scripts/word_fill.py` | Fill Word template with JSON or key=value pairs | `python3 word_fill.py template.docx data.json` |
+
+## Assets
+
+| File | Content |
+|---|---|
+| `assets/excel_themes.json` | Color themes and chart palette for Excel styling |
 
 ## Common workflows
 
-### Excel → PDF report
+### Generate a report from CSV data
 
-```python
-# Generate Excel report, then convert to PDF
-# Step 1: create Excel (see references/excel.md)
-# Step 2: convert to PDF (see references/convert.md)
+```bash
+python3 scripts/excel_report.py sales.csv --title "Q3 Sales Report"
+# → sales.xlsx with styled table, summary sheet, and bar chart
 ```
 
-### Word template → filled document
+### Build a pivot table
 
-```python
-from docx import Document
-
-doc = Document('template.docx')
-for para in doc.paragraphs:
-    if '{{name}}' in para.text:
-        para.text = para.text.replace('{{name}}', 'Alice')
-doc.save('filled.docx')
+```bash
+python3 scripts/excel_pivot.py sales.xlsx \
+  --index Region --columns Product --values Revenue --agg sum
+# → sales_pivot.xlsx with formatted pivot + source sheet
 ```
 
-### Merge multiple PDFs
+### Batch fill Word contracts from JSON
 
-```python
-from pypdf import PdfWriter
+```bash
+python3 scripts/word_fill.py contract_template.docx client_data.json \
+  --output contract_alice.docx
+```
 
-writer = PdfWriter()
-for path in ['report.pdf', 'appendix.pdf']:
-    writer.append(path)
-with open('final.pdf', 'wb') as f:
-    writer.write(f)
+### Merge PDFs with selected pages
+
+```bash
+python3 scripts/pdf_merge.py cover.pdf report.pdf appendix.pdf \
+  --pages all "1-5" "2,4" \
+  --output final.pdf
 ```

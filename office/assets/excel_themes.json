@@ -1,0 +1,56 @@
+{
+  "themes": {
+    "blue": {
+      "header_bg": "2563EB",
+      "header_fg": "FFFFFF",
+      "accent_bg": "DBEAFE",
+      "alt_row_bg": "F0F7FF",
+      "total_bg": "1E3A5F",
+      "total_fg": "FFFFFF"
+    },
+    "green": {
+      "header_bg": "16A34A",
+      "header_fg": "FFFFFF",
+      "accent_bg": "DCFCE7",
+      "alt_row_bg": "F0FFF4",
+      "total_bg": "14532D",
+      "total_fg": "FFFFFF"
+    },
+    "dark": {
+      "header_bg": "0F172A",
+      "header_fg": "F1F5F9",
+      "accent_bg": "1E293B",
+      "alt_row_bg": "F8FAFC",
+      "total_bg": "020617",
+      "total_fg": "FFFFFF"
+    },
+    "orange": {
+      "header_bg": "EA580C",
+      "header_fg": "FFFFFF",
+      "accent_bg": "FEF3C7",
+      "alt_row_bg": "FFFBEB",
+      "total_bg": "7C2D12",
+      "total_fg": "FFFFFF"
+    },
+    "purple": {
+      "header_bg": "7C3AED",
+      "header_fg": "FFFFFF",
+      "accent_bg": "EDE9FE",
+      "alt_row_bg": "F5F3FF",
+      "total_bg": "4C1D95",
+      "total_fg": "FFFFFF"
+    }
+  },
+  "chart_colors": [
+    "2563EB", "16A34A", "EA580C", "7C3AED", "DC2626",
+    "0891B2", "D97706", "059669", "9333EA", "E11D48"
+  ],
+  "table_styles": {
+    "default":    "TableStyleMedium2",
+    "blue":       "TableStyleMedium9",
+    "green":      "TableStyleMedium7",
+    "orange":     "TableStyleMedium3",
+    "dark":       "TableStyleDark1",
+    "light":      "TableStyleLight1"
+  }
+}
